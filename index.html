@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motivational Quote Generator</title>
+  <style>
+    body {
+      background-color: #b0e0e6; /* Pale sky blue */
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+    }
+
+    #quote {
+      font-size: 1.8rem;
+      color: #333;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      min-height: 80px;
+    }
+
+    .fade-in {
+      opacity: 1 !important;
+    }
+
+    .fade-out {
+      opacity: 0 !important;
+    }
+
+    button {
+      background-color: #ff6f61; /* Bright pop color */
+      color: white;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #ff4c3b;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="quote" class="fade-in">Press the button to get inspired!</div>
+    <button onclick="generateQuote()">Inspire Me</button>
+  </div>
+
+  <script>
+    const quotes = [
+      "Believe in yourself and all that you are.",
+      "You are capable of amazing things.",
+      "Push yourself, because no one else is going to do it for you.",
+      "Success doesn’t just find you. You have to go out and get it.",
+      "Great things never come from comfort zones.",
+      "Dream it. Wish it. Do it.",
+      "Don’t stop when you’re tired. Stop when you’re done.",
+      "The harder you work for something, the greater you’ll feel when you achieve it.",
+      "Stay positive. Work hard. Make it happen."
+    ];
+
+    function generateQuote() {
+      const quoteEl = document.getElementById("quote");
+      quoteEl.classList.remove("fade-in");
+      quoteEl.classList.add("fade-out");
+
+      setTimeout(() => {
+        const newQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        quoteEl.textContent = newQuote;
+        quoteEl.classList.remove("fade-out");
+        quoteEl.classList.add("fade-in");
+      }, 500);
+    }
+  </script>
+</body>
+</html>
